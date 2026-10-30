@@ -333,7 +333,6 @@ export default function App(){
     const query=songQuery.trim();if(!query)return;
     setSongBusy(true);setSongResults([]);setArchiveResults([]);setCommonsResults([]);setSourceSearchStatus('Searching audio catalogues, public archives and shared sheet-music media…');
     const urls=[
-      'https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=song&limit=25',
       'https://archive.org/advancedsearch.php?q='+encodeURIComponent('('+query+') AND mediatype:audio')+'&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=creator&fl%5B%5D=year&rows=12&page=1&output=json',
       'https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent(query+' sheet music')+'&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=180&format=json&origin=*'
     ];
