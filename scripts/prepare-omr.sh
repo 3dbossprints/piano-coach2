@@ -21,7 +21,7 @@ fi
 git -C vendor/homr-src fetch -q --depth 1 origin "$HOMR_COMMIT"
 git -C vendor/homr-src checkout -q FETCH_HEAD
 rm -f vendor/homr.zip
-(cd vendor/homr-src && zip -qr ../homr.zip homr LICENSE -x '*.onnx' '*__pycache__*' '*coreml_cache*')
+rm -rf /tmp/kilo/stage && mkdir -p /tmp/kilo/stage && cp -r vendor/homr-src/homr /tmp/kilo/stage/ && cp vendor/homr-src/LICENSE /tmp/kilo/stage/ && node /tmp/kilo/zipdir.js /tmp/kilo/stage ../homr.zip && mv ../homr.zip vendor/homr.zip
 cp vendor/homr.zip public/vendor/homr.zip
 cp vendor/homr-src/LICENSE public/vendor/HOMR-LICENSE
 for m in "${MODELS[@]}"; do
